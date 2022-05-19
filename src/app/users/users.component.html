@@ -1,1 +1,3 @@
-<p>users works!</p>
+<h3>Listado de usuarios</h3>
+<app-table [headers]="usersColumns" [rows]="users" [buttons]="buttons"
+ (parentMethod)="getTableEvent($event)"></app-table>

@@ -1,1 +1,28 @@
-<p>table works!</p>
+<p-table [columns]="headers" [value]="rows" responsiveLayout="scroll">
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns">
+                {{ col.title | titlecase }}
+            </th>
+            <th *ngIf="buttons.length">
+                Acciones
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-data let-columns="columns">
+        <tr>
+            <td *ngFor="let col of columns">
+                {{data.values[col.name]}}
+            </td>
+            <td *ngIf="buttons.length">
+                <button
+                    pButton label="{{ but.title }}"
+                    icon="{{ but.icon }}"
+                    *ngFor="let but of buttons"
+                    (click)="sendData( data.values, but.functionType )"
+                    class="{{ but.class }}">
+                </button>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
