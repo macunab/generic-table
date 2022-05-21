@@ -57,12 +57,14 @@ export class UsersComponent implements OnInit {
   ];
 
   usersColumns: Column<User>[] = [
-    { name: 'uid', title: 'UID' },
-    { name: 'email', title: 'Email' },
-    { name: 'password', title: 'Password' },
-    { name: 'permissionsLevel', title: 'Permisos' },
-    { name: 'isActive', title: 'Activo?' }
+    { field: 'uid', title: 'UID' },
+    { field: 'email', title: 'Email' },
+    { field: 'password', title: 'Password' },
+    { field: 'permissionsLevel', title: 'Permisos' },
+    { field: 'isActive', title: 'Activo?' }
   ];
+
+  usersSearchFilters: string[] = ['values.email', 'values.permissionsLevel'];
 
   /**
    * Title and icon are optional
@@ -70,17 +72,19 @@ export class UsersComponent implements OnInit {
    */
   buttons: ButtonSettings[] = [
     {
-      class: 'p-button-info mr-2',
+      class: 'p-button-sm p-button-info p-button-rounded p-button-text mr-2',
       functionType: 'edit',
-      icon: 'pi pi-pencil'
+      icon: 'pi pi-pencil',
+      tooltipText: 'Editar'
     },
     {
-      class: 'p-button-danger mr-2',
+      class: 'p-button-sm p-button-danger p-button-rounded p-button-text mr-2',
       functionType: 'delete',
-      icon: 'pi pi-trash'
+      icon: 'pi pi-trash',
+      tooltipText: 'Eliminar'
     },
     {
-      class: 'p-button-secondary',
+      class: 'p-button-sm p-button-secondary p-button-rounded p-button-text',
       functionType: 'show',
       icon: 'pi pi-search'
     }
@@ -103,6 +107,10 @@ export class UsersComponent implements OnInit {
         this.openDetails($event.data);
         break;
     }
+  }
+
+  getAddEvent($event: boolean) {
+    console.log(`El modal de agregar nuevo usuario se abre? : ${$event}`);
   }
 
   openUpdate(user: User){ console.log('Usuario editado'); }
