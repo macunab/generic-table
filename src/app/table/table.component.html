@@ -1,7 +1,7 @@
 
 <p-toolbar>
-    <div class="p-toolbar-group-left">
-        <button pButton icon="pi pi-plus" (click)="addEvent(true)" class="p-button-sm p-button-success"
+    <div class="p-toolbar-group-left flex">
+        <button pButton icon="pi pi-plus" (click)="addEvent(true)" class="mb-1 md:mb-0 p-button-sm p-button-success"
             label="Nuevo"></button>
     </div>
     
@@ -9,7 +9,8 @@
         <span class="p-input-icon-left">
             <i class="pi pi-search"></i>
             <input #inputSearch type="text" pInputText placeholder="Search..."
-                (input)="table.filterGlobal( inputSearch.value, 'contains')" />
+                (input)="table.filterGlobal( inputSearch.value, 'contains')"
+                class="flex-grow-1" />
         </span>
    
     </div>
@@ -17,7 +18,8 @@
 
 <hr>
 
-<p-table #table [columns]="headers" [value]="rows" responsiveLayout="scroll" [globalFilterFields]="filters">
+<p-table #table responsiveLayout="stack" [columns]="headers" [value]="rows" [globalFilterFields]="filters"
+    [rows]="3" [paginator]="true">
     <ng-template pTemplate="header" let-columns>
         <tr>
             <th *ngFor="let col of columns">

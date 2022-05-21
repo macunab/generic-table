@@ -1,3 +1,9 @@
-<h3>Listado de usuarios</h3>
-<app-table [headers]="usersColumns" [rows]="users" [buttons]="buttons" [filters]="usersSearchFilters"
- (parentMethod)="getTableEvent($event)" (addEventMethod)="getAddEvent($event)"></app-table>
+
+<h3 class="md:mx-4">Listado de usuarios</h3>
+<p-divider></p-divider>
+<div class="flex flex-wrap-reverse">
+    <p-card class="p-1 flex-grow-1 md:mx-4">
+        <app-table [headers]="usersColumns" [rows]="users" [buttons]="buttons" [filters]="usersSearchFilters"
+        (parentMethod)="getTableEvent($event)" (addEventMethod)="getAddEvent($event)"></app-table>
+    </p-card>
+</div>    
